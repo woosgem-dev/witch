@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "kanban": {
+      "command": "node",
+      "args": ["kanban-mcp/dist/index.js"],
+      "env": {
+        "KANBAN_BOARDS_DIR": "~/.agent-kanban-board"
+      }
+    }
+  }
+}

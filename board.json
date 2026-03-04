@@ -3,534 +3,947 @@
     "id": "board_agent-board-v2",
     "name": "Agent Board Implementation",
     "createdAt": "2026-03-04T12:00:00Z",
-    "updatedAt": "2026-03-04T12:01:00Z",
+    "updatedAt": "2026-03-04T11:18:23.566Z",
     "cards": [
       {
         "id": "card_01",
         "title": "Init package.json with dependencies",
         "description": "npm init, install @modelcontextprotocol/sdk, ws, uuid, typescript. Add build/dev scripts.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "high",
-        "tags": ["setup"],
+        "tags": [
+          "setup"
+        ],
         "externalRef": null,
         "dependencies": [],
-        "dependents": ["card_02"],
+        "dependents": [
+          "card_02"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:00Z",
-        "updatedAt": "2026-03-04T12:01:00Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:05:00Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:05:00Z",
+            "agent": "core-dev",
+            "message": "package.json created, npm install completed (98 packages, 0 vulnerabilities)"
+          }
+        ]
       },
       {
         "id": "card_02",
         "title": "Create tsconfig.json",
         "description": "Target ESNext, module NodeNext, strict mode, outDir dist/.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "high",
-        "tags": ["setup"],
+        "tags": [
+          "setup"
+        ],
         "externalRef": null,
-        "dependencies": ["card_01"],
-        "dependents": ["card_03"],
+        "dependencies": [
+          "card_01"
+        ],
+        "dependents": [
+          "card_03"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:01Z",
-        "updatedAt": "2026-03-04T12:01:01Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:05:01Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:05:01Z",
+            "agent": "core-dev",
+            "message": "tsconfig.json created with ESNext/NodeNext config"
+          }
+        ]
       },
       {
         "id": "card_03",
         "title": "Define CardStatus and Priority types",
         "description": "type CardStatus = 'Todo' | 'In Progress' | 'Review' | 'Done'. type Priority = 'low' | 'medium' | 'high'.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "high",
-        "tags": ["types"],
+        "tags": [
+          "types"
+        ],
         "externalRef": null,
-        "dependencies": ["card_02"],
-        "dependents": ["card_04", "card_05"],
+        "dependencies": [
+          "card_02"
+        ],
+        "dependents": [
+          "card_04",
+          "card_05"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:02Z",
-        "updatedAt": "2026-03-04T12:01:02Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:06:00Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:06:00Z",
+            "agent": "core-dev",
+            "message": "types.ts created with CardStatus, Priority, MutationEvent, OnMutateCallback"
+          }
+        ]
       },
       {
         "id": "card_04",
         "title": "Define Log interface",
         "description": "interface Log { timestamp: string; agent: string; message: string }",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "high",
-        "tags": ["types"],
+        "tags": [
+          "types"
+        ],
         "externalRef": null,
-        "dependencies": ["card_03"],
-        "dependents": ["card_06"],
+        "dependencies": [
+          "card_03"
+        ],
+        "dependents": [
+          "card_06"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:03Z",
-        "updatedAt": "2026-03-04T12:01:03Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:06:01Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:06:01Z",
+            "agent": "core-dev",
+            "message": "Log interface defined in types.ts"
+          }
+        ]
       },
       {
         "id": "card_05",
         "title": "Define Card interface",
         "description": "interface Card with all fields: id, title, description, status, archived, assignee, priority, tags, externalRef, dependencies, dependents, createdBy, createdAt, updatedAt, logs.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "high",
-        "tags": ["types"],
+        "tags": [
+          "types"
+        ],
         "externalRef": null,
-        "dependencies": ["card_03"],
-        "dependents": ["card_06"],
+        "dependencies": [
+          "card_03"
+        ],
+        "dependents": [
+          "card_06"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:04Z",
-        "updatedAt": "2026-03-04T12:01:04Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:06:02Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:06:02Z",
+            "agent": "core-dev",
+            "message": "Card interface with all 16 fields defined in types.ts"
+          }
+        ]
       },
       {
         "id": "card_06",
         "title": "Define Board interface",
         "description": "interface Board { id: string; name: string; createdAt: string; updatedAt: string; cards: Card[] }. Also BoardState wrapper type for file I/O.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "high",
-        "tags": ["types"],
+        "tags": [
+          "types"
+        ],
         "externalRef": null,
-        "dependencies": ["card_04", "card_05"],
-        "dependents": ["card_07"],
+        "dependencies": [
+          "card_04",
+          "card_05"
+        ],
+        "dependents": [
+          "card_07"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:05Z",
-        "updatedAt": "2026-03-04T12:01:05Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:06:03Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:06:03Z",
+            "agent": "core-dev",
+            "message": "Board and BoardState interfaces defined"
+          }
+        ]
       },
       {
         "id": "card_07",
         "title": "StateManager: file I/O",
         "description": "Read board.json from disk, write board.json to disk. Init empty board if file does not exist. KANBAN_DATA env var support.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "high",
-        "tags": ["state"],
+        "tags": [
+          "state"
+        ],
         "externalRef": null,
-        "dependencies": ["card_06"],
-        "dependents": ["card_08", "card_09", "card_10", "card_11"],
+        "dependencies": [
+          "card_06"
+        ],
+        "dependents": [
+          "card_08",
+          "card_09",
+          "card_10",
+          "card_11"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:06Z",
-        "updatedAt": "2026-03-04T12:01:06Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:07:00Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:07:00Z",
+            "agent": "core-dev",
+            "message": "StateManager class with load/save/getState using sync file I/O"
+          }
+        ]
       },
       {
         "id": "card_08",
         "title": "StateManager: create card",
         "description": "Generate card_<uuid> ID, set defaults (status Todo, archived false, priority medium, empty arrays). Persist to board.json.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "high",
-        "tags": ["state"],
+        "tags": [
+          "state"
+        ],
         "externalRef": null,
-        "dependencies": ["card_07"],
-        "dependents": ["card_15"],
+        "dependencies": [
+          "card_07"
+        ],
+        "dependents": [
+          "card_15"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:07Z",
-        "updatedAt": "2026-03-04T12:01:07Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:07:01Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:07:01Z",
+            "agent": "core-dev",
+            "message": "createCard method with uuid, defaults, onMutate callback"
+          }
+        ]
       },
       {
         "id": "card_09",
         "title": "StateManager: find card by ID",
         "description": "Lookup card by ID. Throw if not found. Used by all mutation operations.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "high",
-        "tags": ["state"],
+        "tags": [
+          "state"
+        ],
         "externalRef": null,
-        "dependencies": ["card_07"],
-        "dependents": ["card_10", "card_11", "card_12", "card_13", "card_14"],
+        "dependencies": [
+          "card_07"
+        ],
+        "dependents": [
+          "card_10",
+          "card_11",
+          "card_12",
+          "card_13",
+          "card_14"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:08Z",
-        "updatedAt": "2026-03-04T12:01:08Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:07:02Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:07:02Z",
+            "agent": "core-dev",
+            "message": "findCard method with Error on not found"
+          }
+        ]
       },
       {
         "id": "card_10",
         "title": "StateManager: update card status",
         "description": "Change card status. Validate lifecycle (Todo->InProgress->Review->Done, or back to Todo). Check dependency constraint before In Progress transition.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "high",
-        "tags": ["state"],
+        "tags": [
+          "state"
+        ],
         "externalRef": null,
-        "dependencies": ["card_09"],
-        "dependents": ["card_16"],
+        "dependencies": [
+          "card_09"
+        ],
+        "dependents": [
+          "card_16"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:09Z",
-        "updatedAt": "2026-03-04T12:01:09Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:07:03Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:07:03Z",
+            "agent": "core-dev",
+            "message": "updateStatus with BLOCKED error return when dependencies not Done"
+          }
+        ]
       },
       {
         "id": "card_11",
         "title": "StateManager: assign card",
         "description": "Set or change card.assignee. Persist.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "medium",
-        "tags": ["state"],
+        "tags": [
+          "state"
+        ],
         "externalRef": null,
-        "dependencies": ["card_09"],
-        "dependents": ["card_17"],
+        "dependencies": [
+          "card_09"
+        ],
+        "dependents": [
+          "card_17"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:10Z",
-        "updatedAt": "2026-03-04T12:01:10Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:07:04Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:07:04Z",
+            "agent": "core-dev",
+            "message": "assignCard method implemented"
+          }
+        ]
       },
       {
         "id": "card_12",
         "title": "StateManager: add log entry",
         "description": "Append { timestamp, agent, message } to card.logs. Persist.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "medium",
-        "tags": ["state"],
+        "tags": [
+          "state"
+        ],
         "externalRef": null,
-        "dependencies": ["card_09"],
-        "dependents": ["card_18"],
+        "dependencies": [
+          "card_09"
+        ],
+        "dependents": [
+          "card_18"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:11Z",
-        "updatedAt": "2026-03-04T12:01:11Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:07:05Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:07:05Z",
+            "agent": "core-dev",
+            "message": "addLog method implemented"
+          }
+        ]
       },
       {
         "id": "card_13",
         "title": "StateManager: add dependency with circular detection",
         "description": "Add depends_on to card.dependencies, add card to depends_on.dependents. BFS/DFS cycle check before adding. Error on circular dependency.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "high",
-        "tags": ["state"],
+        "tags": [
+          "state"
+        ],
         "externalRef": null,
-        "dependencies": ["card_09"],
-        "dependents": ["card_20"],
+        "dependencies": [
+          "card_09"
+        ],
+        "dependents": [
+          "card_20"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:12Z",
-        "updatedAt": "2026-03-04T12:01:12Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:07:06Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:07:06Z",
+            "agent": "core-dev",
+            "message": "addDependency with BFS wouldCreateCycle check, bidirectional sync"
+          }
+        ]
       },
       {
         "id": "card_14",
         "title": "StateManager: remove dependency",
         "description": "Remove depends_on from card.dependencies, remove card from depends_on.dependents. Persist.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "medium",
-        "tags": ["state"],
+        "tags": [
+          "state"
+        ],
         "externalRef": null,
-        "dependencies": ["card_09"],
-        "dependents": ["card_21"],
+        "dependencies": [
+          "card_09"
+        ],
+        "dependents": [
+          "card_21"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:13Z",
-        "updatedAt": "2026-03-04T12:01:13Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:07:07Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:07:07Z",
+            "agent": "core-dev",
+            "message": "removeDependency with bidirectional cleanup"
+          }
+        ]
       },
       {
         "id": "card_15a",
         "title": "StateManager: archive card",
         "description": "Set card.archived = true. Remove card from all other cards' dependencies/dependents arrays. Persist.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "medium",
-        "tags": ["state"],
+        "tags": [
+          "state"
+        ],
         "externalRef": null,
-        "dependencies": ["card_09"],
-        "dependents": ["card_22"],
+        "dependencies": [
+          "card_09"
+        ],
+        "dependents": [
+          "card_22"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:14Z",
-        "updatedAt": "2026-03-04T12:01:14Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:07:08Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:07:08Z",
+            "agent": "core-dev",
+            "message": "archiveCard clears all dependency references from other cards"
+          }
+        ]
       },
       {
         "id": "card_15b",
         "title": "StateManager: query cards with filters",
         "description": "Filter cards by status, assignee, tag, externalRef. Exclude archived by default (include_archived flag). Return filtered array.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "core-dev",
         "priority": "medium",
-        "tags": ["state"],
+        "tags": [
+          "state"
+        ],
         "externalRef": null,
-        "dependencies": ["card_09"],
-        "dependents": ["card_23", "card_24"],
+        "dependencies": [
+          "card_09"
+        ],
+        "dependents": [
+          "card_23",
+          "card_24"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:15Z",
-        "updatedAt": "2026-03-04T12:01:15Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:07:09Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:07:09Z",
+            "agent": "core-dev",
+            "message": "queryCards with 5 filters implemented"
+          }
+        ]
       },
       {
         "id": "card_15",
         "title": "MCP tool: create_card",
         "description": "Register create_card tool. Parse params (title, description, assignee, priority, tags, depends_on, externalRef). Call StateManager.createCard. If depends_on provided, call addDependency for each. Return created card.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "team-lead",
         "priority": "high",
-        "tags": ["mcp", "tool"],
+        "tags": [
+          "mcp",
+          "tool"
+        ],
         "externalRef": null,
-        "dependencies": ["card_08", "card_13"],
-        "dependents": ["card_25"],
+        "dependencies": [
+          "card_08",
+          "card_13"
+        ],
+        "dependents": [
+          "card_25"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:16Z",
-        "updatedAt": "2026-03-04T12:01:16Z",
-        "logs": []
+        "updatedAt": "2026-03-04T11:18:23.566Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:10:00Z",
+            "agent": "team-lead",
+            "message": "Starting MCP tools implementation"
+          },
+          {
+            "timestamp": "2026-03-04T11:18:23.566Z",
+            "agent": "team-lead",
+            "message": "Implementation complete. Build verified, server starts successfully."
+          }
+        ]
       },
       {
         "id": "card_16",
         "title": "MCP tool: update_card_status",
         "description": "Register update_card_status tool. Parse card_id, status, log_message. Call StateManager.updateStatus (validates dependency constraint). Optionally add log. Return updated card or BLOCKED error.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "team-lead",
         "priority": "high",
-        "tags": ["mcp", "tool"],
+        "tags": [
+          "mcp",
+          "tool"
+        ],
         "externalRef": null,
-        "dependencies": ["card_10"],
-        "dependents": ["card_25"],
+        "dependencies": [
+          "card_10"
+        ],
+        "dependents": [
+          "card_25"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:17Z",
-        "updatedAt": "2026-03-04T12:01:17Z",
-        "logs": []
+        "updatedAt": "2026-03-04T11:18:23.566Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T11:18:23.566Z",
+            "agent": "team-lead",
+            "message": "Implementation complete. Build verified, server starts successfully."
+          }
+        ]
       },
       {
         "id": "card_17",
         "title": "MCP tool: assign_card",
         "description": "Register assign_card tool. Parse card_id, assignee. Call StateManager.assignCard. Return updated card.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "team-lead",
         "priority": "medium",
-        "tags": ["mcp", "tool"],
+        "tags": [
+          "mcp",
+          "tool"
+        ],
         "externalRef": null,
-        "dependencies": ["card_11"],
-        "dependents": ["card_25"],
+        "dependencies": [
+          "card_11"
+        ],
+        "dependents": [
+          "card_25"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:18Z",
-        "updatedAt": "2026-03-04T12:01:18Z",
-        "logs": []
+        "updatedAt": "2026-03-04T11:18:23.566Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T11:18:23.566Z",
+            "agent": "team-lead",
+            "message": "Implementation complete. Build verified, server starts successfully."
+          }
+        ]
       },
       {
         "id": "card_18",
         "title": "MCP tool: add_log",
         "description": "Register add_log tool. Parse card_id, message, agent. Call StateManager.addLog. Return updated card.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "team-lead",
         "priority": "medium",
-        "tags": ["mcp", "tool"],
+        "tags": [
+          "mcp",
+          "tool"
+        ],
         "externalRef": null,
-        "dependencies": ["card_12"],
-        "dependents": ["card_25"],
+        "dependencies": [
+          "card_12"
+        ],
+        "dependents": [
+          "card_25"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:19Z",
-        "updatedAt": "2026-03-04T12:01:19Z",
-        "logs": []
+        "updatedAt": "2026-03-04T11:18:23.566Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T11:18:23.566Z",
+            "agent": "team-lead",
+            "message": "Implementation complete. Build verified, server starts successfully."
+          }
+        ]
       },
       {
         "id": "card_20",
         "title": "MCP tool: add_dependency",
         "description": "Register add_dependency tool. Parse card_id, depends_on. Call StateManager.addDependency (includes cycle check). Return updated card or CIRCULAR error.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "team-lead",
         "priority": "high",
-        "tags": ["mcp", "tool"],
+        "tags": [
+          "mcp",
+          "tool"
+        ],
         "externalRef": null,
-        "dependencies": ["card_13"],
-        "dependents": ["card_25"],
+        "dependencies": [
+          "card_13"
+        ],
+        "dependents": [
+          "card_25"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:20Z",
-        "updatedAt": "2026-03-04T12:01:20Z",
-        "logs": []
+        "updatedAt": "2026-03-04T11:18:23.566Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T11:18:23.566Z",
+            "agent": "team-lead",
+            "message": "Implementation complete. Build verified, server starts successfully."
+          }
+        ]
       },
       {
         "id": "card_21",
         "title": "MCP tool: remove_dependency",
         "description": "Register remove_dependency tool. Parse card_id, depends_on. Call StateManager.removeDependency. Return updated card.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "team-lead",
         "priority": "medium",
-        "tags": ["mcp", "tool"],
+        "tags": [
+          "mcp",
+          "tool"
+        ],
         "externalRef": null,
-        "dependencies": ["card_14"],
-        "dependents": ["card_25"],
+        "dependencies": [
+          "card_14"
+        ],
+        "dependents": [
+          "card_25"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:21Z",
-        "updatedAt": "2026-03-04T12:01:21Z",
-        "logs": []
+        "updatedAt": "2026-03-04T11:18:23.566Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T11:18:23.566Z",
+            "agent": "team-lead",
+            "message": "Implementation complete. Build verified, server starts successfully."
+          }
+        ]
       },
       {
         "id": "card_22",
         "title": "MCP tool: archive_card",
         "description": "Register archive_card tool. Parse card_id. Call StateManager.archiveCard. Return success.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "team-lead",
         "priority": "medium",
-        "tags": ["mcp", "tool"],
+        "tags": [
+          "mcp",
+          "tool"
+        ],
         "externalRef": null,
-        "dependencies": ["card_15a"],
-        "dependents": ["card_25"],
+        "dependencies": [
+          "card_15a"
+        ],
+        "dependents": [
+          "card_25"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:22Z",
-        "updatedAt": "2026-03-04T12:01:22Z",
-        "logs": []
+        "updatedAt": "2026-03-04T11:18:23.566Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T11:18:23.566Z",
+            "agent": "team-lead",
+            "message": "Implementation complete. Build verified, server starts successfully."
+          }
+        ]
       },
       {
         "id": "card_23",
         "title": "MCP tool: list_cards",
         "description": "Register list_cards tool. Parse filters (status, assignee, tag, externalRef, include_archived). Call StateManager.queryCards. Return filtered array.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "team-lead",
         "priority": "medium",
-        "tags": ["mcp", "tool"],
+        "tags": [
+          "mcp",
+          "tool"
+        ],
         "externalRef": null,
-        "dependencies": ["card_15b"],
-        "dependents": ["card_25"],
+        "dependencies": [
+          "card_15b"
+        ],
+        "dependents": [
+          "card_25"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:23Z",
-        "updatedAt": "2026-03-04T12:01:23Z",
-        "logs": []
+        "updatedAt": "2026-03-04T11:18:23.566Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T11:18:23.566Z",
+            "agent": "team-lead",
+            "message": "Implementation complete. Build verified, server starts successfully."
+          }
+        ]
       },
       {
         "id": "card_24",
         "title": "MCP tool: get_my_cards",
         "description": "Register get_my_cards tool. Parse agent, status. Call StateManager.queryCards with assignee=agent filter. Return filtered array.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "team-lead",
         "priority": "medium",
-        "tags": ["mcp", "tool"],
+        "tags": [
+          "mcp",
+          "tool"
+        ],
         "externalRef": null,
-        "dependencies": ["card_15b"],
-        "dependents": ["card_25"],
+        "dependencies": [
+          "card_15b"
+        ],
+        "dependents": [
+          "card_25"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:24Z",
-        "updatedAt": "2026-03-04T12:01:24Z",
-        "logs": []
+        "updatedAt": "2026-03-04T11:18:23.566Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T11:18:23.566Z",
+            "agent": "team-lead",
+            "message": "Implementation complete. Build verified, server starts successfully."
+          }
+        ]
       },
       {
         "id": "card_25",
         "title": "MCP Server: stdio transport + tool registration",
         "description": "Create MCP Server with @modelcontextprotocol/sdk. Register all 9 tools. Connect to stdio transport.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "team-lead",
         "priority": "high",
-        "tags": ["mcp", "server"],
+        "tags": [
+          "mcp",
+          "server"
+        ],
         "externalRef": null,
-        "dependencies": ["card_15", "card_16", "card_17", "card_18", "card_20", "card_21", "card_22", "card_23", "card_24"],
-        "dependents": ["card_30"],
+        "dependencies": [
+          "card_15",
+          "card_16",
+          "card_17",
+          "card_18",
+          "card_20",
+          "card_21",
+          "card_22",
+          "card_23",
+          "card_24"
+        ],
+        "dependents": [
+          "card_30"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:25Z",
-        "updatedAt": "2026-03-04T12:01:25Z",
-        "logs": []
+        "updatedAt": "2026-03-04T11:18:23.566Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T11:18:23.566Z",
+            "agent": "team-lead",
+            "message": "Implementation complete. Build verified, server starts successfully."
+          }
+        ]
       },
       {
         "id": "card_26",
         "title": "Auto port discovery",
         "description": "Scan from KANBAN_PORT or 3001 upward. Try net.createServer to find available port. Return discovered port number.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "server-dev",
         "priority": "medium",
-        "tags": ["server"],
+        "tags": [
+          "server"
+        ],
         "externalRef": null,
-        "dependencies": ["card_02"],
-        "dependents": ["card_27"],
+        "dependencies": [
+          "card_02"
+        ],
+        "dependents": [
+          "card_27"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:26Z",
-        "updatedAt": "2026-03-04T12:01:26Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:08:00Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:08:00Z",
+            "agent": "server-dev",
+            "message": "findAvailablePort scans 100 ports from KANBAN_PORT or 3001"
+          }
+        ]
       },
       {
         "id": "card_27",
         "title": "WebSocket server: connection + snapshot",
         "description": "Create ws.Server on discovered port. On new connection, send board_snapshot with full board state.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "server-dev",
         "priority": "medium",
-        "tags": ["server", "ws"],
+        "tags": [
+          "server",
+          "ws"
+        ],
         "externalRef": null,
-        "dependencies": ["card_26", "card_07"],
-        "dependents": ["card_28"],
+        "dependencies": [
+          "card_26",
+          "card_07"
+        ],
+        "dependents": [
+          "card_28"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:27Z",
-        "updatedAt": "2026-03-04T12:01:27Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:08:01Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:08:01Z",
+            "agent": "server-dev",
+            "message": "WebSocketManager sends board_snapshot on connect, handles ping/pong"
+          }
+        ]
       },
       {
         "id": "card_28",
         "title": "WebSocket: broadcast on state mutation",
         "description": "Expose broadcast(event, payload) function. Called by StateManager after every mutation. Send board_update to all connected clients.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "server-dev",
         "priority": "medium",
-        "tags": ["server", "ws"],
+        "tags": [
+          "server",
+          "ws"
+        ],
         "externalRef": null,
-        "dependencies": ["card_27"],
-        "dependents": ["card_30"],
+        "dependencies": [
+          "card_27"
+        ],
+        "dependents": [
+          "card_30"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:28Z",
-        "updatedAt": "2026-03-04T12:01:28Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:08:02Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:08:02Z",
+            "agent": "server-dev",
+            "message": "broadcast sends board_update to all OPEN clients"
+          }
+        ]
       },
       {
         "id": "card_29",
         "title": "HTTP GET /board endpoint",
         "description": "Serve full board state as JSON on GET /board. Runs on same port as WebSocket server.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "server-dev",
         "priority": "low",
-        "tags": ["server", "http"],
+        "tags": [
+          "server",
+          "http"
+        ],
         "externalRef": null,
-        "dependencies": ["card_27"],
-        "dependents": ["card_30"],
+        "dependencies": [
+          "card_27"
+        ],
+        "dependents": [
+          "card_30"
+        ],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:29Z",
-        "updatedAt": "2026-03-04T12:01:29Z",
-        "logs": []
+        "updatedAt": "2026-03-04T12:08:03Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:08:03Z",
+            "agent": "server-dev",
+            "message": "GET /board returns full BoardState as JSON, 404 for other routes"
+          }
+        ]
       },
       {
         "id": "card_30",
         "title": "Main: wire all components + start",
         "description": "Instantiate StateManager, MCP Server, WebSocket Server. Connect broadcast callback. Start MCP stdio. Start WS server. Print port to stderr.",
-        "status": "Todo",
+        "status": "Done",
         "archived": false,
-        "assignee": null,
+        "assignee": "team-lead",
         "priority": "high",
-        "tags": ["core"],
+        "tags": [
+          "core"
+        ],
         "externalRef": null,
-        "dependencies": ["card_25", "card_28", "card_29"],
+        "dependencies": [
+          "card_25",
+          "card_28",
+          "card_29"
+        ],
         "dependents": [],
         "createdBy": "orchestrator",
         "createdAt": "2026-03-04T12:01:30Z",
-        "updatedAt": "2026-03-04T12:01:30Z",
-        "logs": []
+        "updatedAt": "2026-03-04T11:18:23.566Z",
+        "logs": [
+          {
+            "timestamp": "2026-03-04T12:10:00Z",
+            "agent": "team-lead",
+            "message": "Starting MCP integration and main wiring"
+          },
+          {
+            "timestamp": "2026-03-04T11:18:23.566Z",
+            "agent": "team-lead",
+            "message": "Implementation complete. Build verified, server starts successfully."
+          }
+        ]
       }
     ]
   }
