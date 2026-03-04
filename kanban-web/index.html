@@ -290,6 +290,7 @@
   var reconnectDelay = 1000;
   var wsPort = null;
   var selectedAgent = null;
+  var selectedCardId = null;
   var simulation = null;
   var nodesData = [];
   var linksData = [];
@@ -411,6 +412,7 @@
     updateMinimap();
   });
   svg.call(zoomBehavior);
+  svg.on('click', function() { if (selectedCardId) { selectedCardId = null; applyHighlight(); } });
 
   // Drag
   var drag = d3.drag()
@@ -665,6 +667,11 @@
     // Drag + interactions
     activeNodes.call(drag);
     activeNodes
+      .on('click', function(event, d) {
+        event.stopPropagation();
+        selectedCardId = selectedCardId === d.id ? null : d.id;
+        applyHighlight();
+      })
       .on('mouseenter', function(event, d) {
         if (d.card.description) { tooltipEl.textContent = d.card.description; tooltipEl.classList.add('visible'); }
       })
@@ -674,7 +681,7 @@
       })
       .on('mouseleave', function() { tooltipEl.classList.remove('visible'); });
 
-    applyAgentFilter();
+    applyHighlight();
 
     // Fit on first load
     if (oldPosMap.size === 0 && cards.length > 0) {
@@ -738,27 +745,70 @@
       pill.addEventListener('click', function() {
         selectedAgent = selectedAgent === agent ? null : agent;
         updateAgentPills(cards);
-        applyAgentFilter();
+        applyHighlight();
       });
       agentPillsEl.appendChild(pill);
     });
   }
 
-  function applyAgentFilter() {
+  // Collect all upstream (dependencies) and downstream (dependents) IDs for a card
+  function getCardTree(cardId) {
+    if (!boardData || !boardData.cards) return new Set();
+    var cards = boardData.cards;
+    var tree = new Set();
+    tree.add(cardId);
+    // Build dependency and dependent maps
+    var depsOf = new Map(); // card -> its dependencies (upstream)
+    var dependentsOf = new Map(); // card -> cards that depend on it (downstream)
+    cards.forEach(function(c) {
+      depsOf.set(c.id, (c.dependencies || []).slice());
+      (c.dependencies || []).forEach(function(depId) {
+        if (!dependentsOf.has(depId)) dependentsOf.set(depId, []);
+        dependentsOf.get(depId).push(c.id);
+      });
+    });
+    // Walk upstream
+    var queue = (depsOf.get(cardId) || []).slice();
+    while (queue.length) {
+      var id = queue.pop();
+      if (!tree.has(id)) { tree.add(id); (depsOf.get(id) || []).forEach(function(d) { queue.push(d); }); }
+    }
+    // Walk downstream
+    queue = (dependentsOf.get(cardId) || []).slice();
+    while (queue.length) {
+      var id = queue.pop();
+      if (!tree.has(id)) { tree.add(id); (dependentsOf.get(id) || []).forEach(function(d) { queue.push(d); }); }
+    }
+    return tree;
+  }
+
+  function applyHighlight() {
     if (!activeNodes || !activeEdges) return;
+    var hasFilter = selectedAgent || selectedCardId;
+
+    var treeSet = selectedCardId ? getCardTree(selectedCardId) : null;
+
     activeNodes.each(function(d) {
       var node = d3.select(this);
-      if (!selectedAgent) { node.attr('opacity', 1); }
-      else { node.attr('opacity', (d.card.assignee === selectedAgent || d.card.createdBy === selectedAgent) ? 1 : 0.15); }
+      if (!hasFilter) { node.attr('opacity', 1); return; }
+      var agentMatch = selectedAgent && (d.card.assignee === selectedAgent || d.card.createdBy === selectedAgent);
+      var treeMatch = treeSet && treeSet.has(d.id);
+      node.attr('opacity', (agentMatch || treeMatch || !hasFilter) ? 1 : 0.15);
     });
+
     activeEdges.each(function(d) {
       var line = d3.select(this);
-      if (!selectedAgent) { line.classed('dimmed', false); }
-      else {
+      if (!hasFilter) { line.classed('dimmed', false); return; }
+      var sId = typeof d.source === 'object' ? d.source.id : d.source;
+      var tId = typeof d.target === 'object' ? d.target.id : d.target;
+      var agentMatch = false;
+      if (selectedAgent) {
         var sm = (d.source.card || {}).assignee === selectedAgent || (d.source.card || {}).createdBy === selectedAgent;
         var tm = (d.target.card || {}).assignee === selectedAgent || (d.target.card || {}).createdBy === selectedAgent;
-        line.classed('dimmed', !(sm || tm));
+        agentMatch = sm || tm;
       }
+      var treeMatch = treeSet && treeSet.has(sId) && treeSet.has(tId);
+      line.classed('dimmed', !(agentMatch || treeMatch));
     });
   }
 
