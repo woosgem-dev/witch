@@ -1,21 +1,20 @@
 # Witch
 
-Real-time DAG dashboard for multi-agent pipelines. Built as an MCP server — plug it into Claude Code and watch your agents work.
+MCP server that turns multi-agent task pipelines into a live DAG you can actually see.
 
 ![Dashboard](docs/screenshot.png)
 
-## What it does
+## What is this
 
-- Visualize agent task pipelines as a force-directed DAG
-- Track card status, dependencies, assignments, and logs in real time
-- Filter by agent or click a card to highlight its dependency tree
-- MCP tools let agents create cards, update status, log progress, and manage dependencies
+Agents spawn tasks, depend on each other, pass work around. Without a visual, you're reading JSON diffs to figure out what's going on. Witch gives you a force-directed graph that updates as agents work -- cards, edges, status, logs, all live.
+
+It runs as an MCP server. Agents call tools to create cards and update status. The dashboard connects over WebSocket and renders everything in real time.
 
 ## Stack
 
-- **MCP Server**: `@modelcontextprotocol/sdk` + WebSocket for live updates
-- **Dashboard**: D3.js v7 force-directed graph, pure SVG, dark neon theme
-- **Storage**: JSON files in `~/.agent-kanban-board/`
+- MCP server: `@modelcontextprotocol/sdk`, WebSocket
+- Dashboard: D3.js v7 force graph, pure SVG
+- Storage: JSON files in `~/.agent-kanban-board/`
 
 ## Setup
 
@@ -27,7 +26,7 @@ npm run build
 
 ## Usage with Claude Code
 
-Add to your `.mcp.json`:
+Add to `.mcp.json`:
 
 ```json
 {
@@ -43,33 +42,33 @@ Add to your `.mcp.json`:
 }
 ```
 
-Then open the dashboard:
+Open the dashboard:
 
 ```bash
 open http://localhost:3002
 ```
 
-## MCP Tools
+## MCP tools
 
-| Tool | Description |
+| Tool | What it does |
 |------|-------------|
 | `new_board` | Create or switch boards |
 | `list_boards` | List saved boards |
 | `get_board_info` | Board info + dashboard URL |
 | `create_card` | Create a task card |
-| `update_card_status` | Update status (respects dependency constraints) |
-| `assign_card` | Assign to an agent |
-| `add_log` | Append execution log |
-| `add_dependency` / `remove_dependency` | Manage task dependencies |
-| `archive_card` | Archive completed cards |
+| `update_card_status` | Change status (dependency-aware) |
+| `assign_card` | Assign card to an agent |
+| `add_log` | Append an execution log entry |
+| `add_dependency` / `remove_dependency` | Wire up task dependencies |
+| `archive_card` | Archive a card |
 | `list_cards` / `get_my_cards` | Query cards |
 
-## Dashboard Features
+## Dashboard
 
-- **Force-directed DAG** with depth-based horizontal layout
-- **Status glow effects**: blue pulse (active), yellow pulse (review), green static (done)
-- **Agent filter pills** at the bottom bar
-- **Card tree highlight**: click a card to see its full upstream/downstream chain
-- **Minimap** for navigation on large graphs
-- **Log viewer** modal per card
-- **Real-time updates** via WebSocket
+- Force-directed DAG, laid out horizontally by dependency depth
+- Cards glow by status: blue pulse when active, yellow pulse in review, green when done
+- Click a card to highlight its full dependency tree (upstream and downstream)
+- Agent filter pills at the bottom -- click one to isolate that agent's cards
+- Minimap in the corner for large graphs
+- Click the log count on a card to open its execution log
+- All updates are live over WebSocket
